@@ -1,0 +1,56 @@
+@startuml
+class Application{
++start()
++main()
+}
+
+class ToDoMainController{
+-Button EditListButton
+-Button NewListButton
+-Button RemoveListButton
+-Button SaveListButton
+-ListView<> ToDoListsView
+addNewList()
+editList()
+removeList()
+saveList()
+}
+
+class ToDoItemsController{
+-Button AddItemButton
+-Tab AllItemsTab
+-Tab CompletedItemsTab
+-Button EditItemButton
+-Button RemoveItemButton
+addItem()
+editItem()
+removeItem()
+showAllItems()
+showCompletedItems()
+}
+
+class DataTableManager{
++DataTable
+createDataTable()
+deleteDataTable()
+}
+
+class DataTable{
++listName
++List[][]
++numberOfItems
++numberOfCompletedItems
+addItem()
+removeItem()
+getItemDescription()
+getItemDueDate()
+getItemCompleted()
+saveDataTable()
+}
+
+Application ..> ToDoMainController
+ToDoMainController ..> ToDoItemsController
+ToDoMainController ..> DataTableManager
+DataTableManager *-- DataTable
+ToDoItemsController ..> DataTable
+@enduml
